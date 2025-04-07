@@ -1029,7 +1029,7 @@ extension Client {
         public func makeIterator() -> Retrier {
             return Retrier(policy: self,
                            deadline: timeout.flatMap {
-                            .now().advanced(by: .nanoseconds(Int($0 * 1e+9)))
+                            .now() + DispatchTimeInterval.nanoseconds(Int($0 * 1e+9))
                            })
         }
     }
